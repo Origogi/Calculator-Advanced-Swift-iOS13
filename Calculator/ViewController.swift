@@ -37,6 +37,19 @@ class ViewController: UIViewController {
                 isFinishedTypingNumber = false
                 displayLabel.text = numValue
             } else {
+                if numValue == "." {
+                    guard let currentDisplayName = Double(displayLabel.text!) else {
+                        fatalError("Cannot convert display label text to double")
+                    }
+                    
+                    let isInt = floor(currentDisplayName) == currentDisplayName
+                    
+                    if !isInt {
+                        return
+                    }
+                }
+                
+                
                 displayLabel.text?.append(numValue)
             }
         }
